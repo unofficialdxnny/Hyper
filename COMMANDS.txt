@@ -1,0 +1,9 @@
+help : prints commands for terminal
+cls : clears the terminal
+clear : clears the terminal
+licence : displays the licence
+reset : resets terminal to default view
+hyper strip <url> : strips url to give page source code
+hyper install <url> <name> <.type> : installs file from url to current directory. (add path before name to save to different dir)
+hyper instacheck <username> : checks details of a instagram user
+hyper tikinstall <video_id> : installs video of file
