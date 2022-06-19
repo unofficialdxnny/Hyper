@@ -1,20 +1,20 @@
 
-licence = '''
-
-
-'''
 
 ## Libraries needed
 
 from distutils.log import error
 import getpass
 import os
+from urllib.error import URLError
 import requests
 from pystyle import Write, Colorate, Colors
 import time
 from instagramy import InstagramUser
+import instaloader
 import random
 from TikTokApi import TikTokApi
+import urllib3
+import vlc
 
 banner = '''
 
@@ -23,6 +23,7 @@ Copyright (C) unofficialdxnny (Danial Ahmed). All rights reserved.
 Type 'Licence' to view Licence
 
 '''
+## add google search google.com/search?q=
 os.system('cls')
 print(Colorate.Horizontal(Colors.red_to_purple, f"{banner}", 1))
 print('')
@@ -58,11 +59,6 @@ while True:
         elif main_input == 'reset':
             clear()
             reset()
-        ## View a websites Source
-        elif split[0] == 'hyper' and split[1] == 'strip':
-            source = requests.get(split[2])
-            print(source.text)
-            print('')
 
         ## Install url contents
         elif split[0] == 'hyper' and split[1] == 'install':
@@ -74,29 +70,24 @@ while True:
 
         
         ## check instauser details
-        
-        elif split[0] == 'hyper' and split[1] == 'instacheck':
-            name = split[2]
-            # instance of instagram user
-            print(name)
-            user = InstagramUser(name)
-            print(user.is_verified)
-            # total followers
-            followers = user.number_of_followers
-            print('Total followers:', followers)
-            # total followings
-            following = user.number_of_followings
-            print('Total followings:',following)
-            # total number of posts
-            posts = user.number_of_posts
-            print('Total posts:',posts)
-            # bio description
-            bio = user.biography
-            print('Bio:\n', bio)
-            # link in bio
-            link_in_bio = user.website
-            print('Link in Bio:', link_in_bio)
-        
+        # (broken)
+        ##elif split[0] == 'hyper' and split[1] == 'instacheck':
+        ##    # Connecting the profile
+        ##    user = InstagramUser(split[2])
+
+        ##    
+        ##    print(user.is_verified())
+        ##    print(user.popularity())
+        ##    print(user.get_biography())
+        ##    posts = user.get_posts_details()
+        ##    print('\n\nLikes', 'Comments')
+        ##    for post in posts:
+        ##        likes = post["likes"]
+        ##        comments = post["comment"]
+        ##        print(likes,comments)
+
+            
+        ## install a tiktok video
         elif split[0] == 'hyper' and split[1] == 'tikinstall':
             with TikTokApi() as api:
                 video = api.video(id=split[2])
@@ -111,28 +102,50 @@ while True:
         
         elif main_input == 'help':
             print('')
-            print('Hyper Help')
+            print(Colorate.Horizontal(Colors.red_to_purple, f"Hyper Help", 1))
             print(open('COMMANDS.txt').read())
             print('')
-            print('Terminal Help')
+            print(Colorate.Horizontal(Colors.red_to_purple, f"Terminal Help", 1))
             os.system('help')
 
 
 
+        ## play audio within terminal (.mp3 and .wav) 
+        elif split[0] == 'hyper' and split[1] == 'play':
+            media = vlc.MediaPlayer(split[2])
+            media.play()
 
-
-
+        ## View a websites Source
+        elif split[0] == 'hyper' and split[1] == 'strip':
+            source = requests.get(split[2])
+            print(source.text)
+            print('')
+            
+        
         # elif split[0] == 'hyper' and split[1] == 'hash':
         #     my_string = input("What Is The Message You Would Like To Encode? : ")
         #     hash_object = hashlib.sha512(b'Hello World')
         #     hex_dig = hash_object.hexdigest()
         #     print(hex_dig)
         #     time.sleep(5)
+        elif main_input == '':
+            print("Invalid Input type 'help' for help")
+
+
+
 
         else:
             os.system(main_input)
 
-    except KeyboardInterrupt and ImportError:
-        print(error)
+    except KeyboardInterrupt:
         os.system('cls')
         reset()
+    
+    except IndexError:
+        print('')
+
+    except requests.exceptions.ConnectionError:
+        print('Unable to make a valid connection')
+
+    except URLError:
+        print('Unable to make a valid connection')
