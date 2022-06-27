@@ -1,10 +1,11 @@
-import os
 from pystyle import Write, Colorate, Colors
 import getpass
 import requests
 import urllib3
 from urllib.error import URLError
 import unofficialdxnny
+import os
+import pyautogui as pag
 banner = '''
 Hyper
 Copyright (C) unofficialdxnny (Danial Ahmed). All rights reserved.
@@ -15,22 +16,40 @@ unofficialdxnny.clear()
 print(Colorate.Horizontal(Colors.red_to_purple, f"{banner}", 1))
 print('')
 username = getpass.getuser()
-
+def reset():
+    print(Colorate.Horizontal(Colors.red_to_purple, f"{banner}", 1))
+    print('')
 while True:
     try:
-        main_input = Write.Input(f"Hyper@{username}> ", Colors.red_to_purple, interval=0.0025).lower()
+        main_input = Write.Input(f"Hyper@{username}> ", Colors.red_to_purple, interval=0).lower()
         split = main_input.split()
 
 
         if split[0] == 'clear':
             unofficialdxnny.clear()
+        
+        elif split[0] == 'reset':
+            unofficialdxnny.clear()
+            reset()
+
+        
+        elif split[0] == 'exit':
+            unofficialdxnny.exit()
+            
+            
+            
+            
+
+
+        
 
 
 
 
 
 
-
+        else:
+            os.system(main_input)
 
 
 
