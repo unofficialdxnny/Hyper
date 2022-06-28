@@ -6,6 +6,8 @@ from urllib.error import URLError
 import unofficialdxnny
 import os
 import pyautogui as pag
+from instagramy import InstagramUser
+
 banner = '''
 Hyper
 Copyright (C) unofficialdxnny (Danial Ahmed). All rights reserved.
@@ -51,9 +53,24 @@ while True:
             print(source.text)
             print('')
         
+        elif split[0] == 'hyper' and split[1] == 'insuser':
+            # user input
+            name = split[2]
+            # instance of instagram user
+            user = InstagramUser(name)
+            # total followers
+            followers = user.number_of_followers
+            print('Total followers:', followers)
+            # total followings
+            following = user.number_of_followings
+            print('Total followings:',following)
+            # total number of posts
+            posts = user.number_of_posts
+            print('Total posts:',posts)
 
 
-
+        elif split[0] == 'hyper' and split[1] == 'joke':
+            unofficialdxnny.joke()
 
 
 
