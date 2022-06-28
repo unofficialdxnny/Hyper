@@ -25,8 +25,9 @@ while True:
         split = main_input.split()
 
 
-        if split[0] == 'clear':
+        if split[0] == 'clear' or split[0] == 'cls' or split[0] == 'clean':
             unofficialdxnny.clear()
+        
         
         elif split[0] == 'reset':
             unofficialdxnny.clear()
@@ -38,13 +39,17 @@ while True:
         
         
         elif split[0] == 'hyper' and split[1] == 'help':
+            unofficialdxnny.help()
+            print('')
             
-            print(Colorate.Horizontal(Colors.red_to_purple, f"{open('help.txt').read()}", 1))
-            
-            
-            
+        elif split[0] == 'licence':
+            unofficialdxnny.licence()
 
-
+        ## View a websites Source
+        elif split[0] == 'hyper' and split[1] == 'strip':
+            source = requests.get(split[2])
+            print(source.text)
+            print('')
         
 
 
@@ -68,6 +73,9 @@ while True:
     except requests.exceptions.ConnectionError:
         print('')
         Write.Print(f"Unable to make a valid connection!", Colors.red, interval=0)
+        print('')
+    except requests.exceptions.MissingSchema:
+        Write.Print(f"Link should start with 'https' or 'http'!", Colors.red, interval=0)
         print('')
     except URLError:
         Write.Print(f"Unable to make a valid connection!", Colors.red, interval=0)
