@@ -35,7 +35,11 @@ while True:
         
         elif split[0] == 'exit':
             unofficialdxnny.exit()
+        
+        
+        elif split[0] == 'hyper' and split[1] == 'help':
             
+            print(Colorate.Horizontal(Colors.red_to_purple, f"{open('help.txt').read()}", 1))
             
             
             
@@ -62,7 +66,12 @@ while True:
         print('')
 
     except requests.exceptions.ConnectionError:
-        print('Unable to make a valid connection')
-
+        print('')
+        Write.Print(f"Unable to make a valid connection!", Colors.red, interval=0)
+        print('')
     except URLError:
-        print('Unable to make a valid connection')
+        Write.Print(f"Unable to make a valid connection!", Colors.red, interval=0)
+        print('')
+    except FileNotFoundError:
+        Write.Print(f"Commands not found...", Colors.red, interval=0)
+        print('')
