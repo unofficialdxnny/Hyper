@@ -53,26 +53,16 @@ while True:
             print(source.text)
             print('')
         
+        ## Get instagram users public data      
         elif split[0] == 'hyper' and split[1] == 'insuser':
-            # user input
-            name = split[2]
-            # instance of instagram user
-            user = InstagramUser(name)
-            # total followers
-            followers = user.number_of_followers
-            print('Total followers:', followers)
-            # total followings
-            following = user.number_of_followings
-            print('Total followings:',following)
-            # total number of posts
-            posts = user.number_of_posts
-            print('Total posts:',posts)
+            unofficialdxnny.insuser()
 
-
+  
         elif split[0] == 'hyper' and split[1] == 'joke':
             unofficialdxnny.joke()
 
-
+        elif split[0] == 'hyper' and split[1] == 'pdata':
+            unofficialdxnny.internet_protocol()
 
         else:
             os.system(main_input)
@@ -80,7 +70,7 @@ while True:
 
 
 
-    ## Errors
+    ## EXCEPTIONS
     except KeyboardInterrupt:
         print('')
 

@@ -8,4 +8,6 @@ hyper install <url> <name> <.type> : installs file from url to current directory
 hyper instacheck <username> : checks details of a instagram user
 hyper tikinstall <video_id> : installs video of file
 hyper play <path/to/audio/file> : this will play audio in the terminal (url not supported)
-
+exit : this will close the terminal
+hyper joke : this will print a joke
+hyper pdata : this will give some personal information about your network
