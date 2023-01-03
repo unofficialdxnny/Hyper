@@ -1,6 +1,11 @@
 # Hyper
 BetterTerminal to carry out many tasks with ease
 
+
+
+Project Moved <a href="https://github.com/Hyper-cli/Hyper">Here</a>
+
+
 #### Commands
 ```txt
 hyper help : this command  displays help
@@ -21,3 +26,4 @@ hyper urlshot <url> : this command will open screenshot of a page
 hyper urlscrape <url> : this command will scrape code from a site
 hyper playsound <path/to/sound.file_type> <.file_type> : this command will play audio from terminal while you work on it
 ```
+
