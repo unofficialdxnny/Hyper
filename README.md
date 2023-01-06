@@ -3,7 +3,6 @@ BetterTerminal to carry out many tasks with ease
 
 
 
-Project Moved <a href="https://github.com/Hyper-cli/Hyper">Here</a>
 
 
 #### Commands
